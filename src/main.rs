@@ -5,9 +5,8 @@ use std::time::Duration;
 use rppal::gpio::Gpio;
 use rppal::system::DeviceInfo;
 
-// Gpio uses BCM pin numbering. BCM GPIO 23 is tied to physical pin 16.
-const GPIO_LED1: u8 = 23;
-const GPIO_LED2: u8 = 24;
+const GPIO_LED1: u8 = 23; // pin 16
+const GPIO_LED2: u8 = 24; // pin 18
 
 fn main() -> Result<(), Box<dyn Error>> {
     println!("Blinking an LED on a {}.", DeviceInfo::new()?.model());
@@ -19,6 +18,8 @@ fn main() -> Result<(), Box<dyn Error>> {
     pin1.set_high();
     thread::sleep(Duration::from_millis(500));
     pin1.set_low();
+
+    thread::sleep(Duration::from_millis(500));
 
     pin2.set_high();
     thread::sleep(Duration::from_millis(500));
