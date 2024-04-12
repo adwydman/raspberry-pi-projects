@@ -14,16 +14,20 @@ fn main() -> Result<(), Box<dyn Error>> {
     let mut pin1 = Gpio::new()?.get(GPIO_LED1)?.into_output();
     let mut pin2 = Gpio::new()?.get(GPIO_LED2)?.into_output();
 
-    // Blink the LED by setting the pin's logic level high for 500 ms.
-    pin1.set_high();
-    thread::sleep(Duration::from_millis(500));
-    pin1.set_low();
+    loop {
+        pin1.set_high();
+        thread::sleep(Duration::from_millis(500));
+        pin1.set_low();
 
-    thread::sleep(Duration::from_millis(500));
+        thread::sleep(Duration::from_millis(500));
 
-    pin2.set_high();
-    thread::sleep(Duration::from_millis(500));
-    pin2.set_low();
+        pin2.set_high();
+        thread::sleep(Duration::from_millis(500));
+        pin2.set_low();
+
+        thread::sleep(Duration::from_millis(500));
+    }
+
 
     Ok(())
 }
