@@ -14,7 +14,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     let mut pin1 = Gpio::new()?.get(GPIO_LED1)?.into_output();
     let mut pin2 = Gpio::new()?.get(GPIO_LED2)?.into_output();
-    let mut pin2 = Gpio::new()?.get(GPIO_LED3)?.into_output();
+    let mut pin3 = Gpio::new()?.get(GPIO_LED3)?.into_output();
 
     loop {
         pin1.set_high();
